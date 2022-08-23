@@ -1,3 +1,4 @@
+import json
 import sqlite3
 
 from flask import jsonify
@@ -150,7 +151,7 @@ def get_json(movie_type, movie_year, movie_genre):
     for row in result:
         movies.append({'title': row[0], 'type': row[1], 'release_year': row[2], 'genre': row[3]})
     con.close()
-    return jsonify(movies)
+    return json.dumps(movies)
 
 print(get_json('Movie', '2017', 'Dramas'))
 
